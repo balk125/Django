@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myWebsite</title>
+    <style>
+
+
+    </style>
+</head>
+
+<body>
+    <h1>Hello world</h1>
+
+
+
+    <form action="/aboutus" method="get">
+        <label for="name">Name</label>
+        <input name="name" id="name" placeholder="Enter your name" onclick="checkCheckboxOn()">
+        <br>
+        <label for="email">email</label>
+        <input name="email" id="email" placeholder="Enter your email id" onclick="checkCheckboxOn()">
+        <h2>Enter your text to remove punctuation, capitalize or new line remove</h2>
+
+        <textarea id="text1" name="textare" cols="30" rows="10" style="width: 1501px; height: 206px;" placeholder="Enter your query" onclick="checkCheckboxOn()"></textarea>
+        <!-- <button id="btn" type="submit" name="submit" disabled="disabled">Submit</button> -->
+        <input type="checkbox" name="check_punctuation" id="checkbox1"  onclick="checkCheckbox()">Accept Terms & Condition <br>
+        <input type="checkbox" name="check_captalize" id="checkbox2"  onclick="checkCheckbox()">check this to capitalize <br>
+        <input type="checkbox" name="check_newline" id="checkbox3"  onclick="checkCheckbox()">check this to remove newline <br>
+        
+        <input type="checkbox" name="check_extraspace" id="checkbox4"  onclick="checkCheckbox()">check this to remove Extra Space <br>
+        
+
+
+
+        <input type="submit" disabled="disabled" id="btn-submit" onclick="printdata()">
+    </form>
+    <br>
+    <!-- <a href="/aboutus"><button>aboutus</button></a> -->
+
+
+
+<script>
+    function checkCheckbox(){
+        var val1=document.getElementById('checkbox1');
+        var val2=document.getElementById('checkbox2');
+        var val3=document.getElementById('checkbox3');
+        var val4=document.getElementById('checkbox4');
+        var btn=document.getElementById('btn-submit');
+        var name=document.getElementById('name').value;
+        var email=document.getElementById('email').value;
+        var desc=document.getElementById('text1').value;
+        // console.log(name);
+        if((val1.checked ||val2.checked || val3.checked ||val4.checked )&& name!='' && email!='' && desc!=''){
+            btn.removeAttribute("disabled")
+
+
+        }
+        else
+        btn.disabled=true;
+    }
+
+    // function checkCheckboxOn(){
+    //     var val=document.getElementById('checkbox1');
+        
+    //     var name=document.getElementById('name').value;
+    //     var email=document.getElementById('email').value;
+    //     var desc=document.getElementById('text1').value;
+    //     console.log(desc);
+    //     if(name!='' && email!='' && desc!=''){
+    //         val.removeAttribute("disabled")
+
+
+    //     }
+    //     else
+    //     val.disabled=true;
+    // }
+
+
+
+
+
+</script>
+<!-- <script src="index.js"></script> -->
+
+</body>
+
+</html>
