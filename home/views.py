@@ -6,72 +6,9 @@ from django.shortcuts import redirect, render,HttpResponse
 def index(request):
     return render(request,'index.html')
 def about(request):
-    # v1=request.GET.get('textare','default')
-    # v2=request.GET.get('name','default')
-    # v3=request.GET.get('email','default')
-    # check_punctuation =request.GET.get('check_punctuation','off')
-    # check_captalize=request.GET.get('check_captalize','off')
-    # check_newline=request.GET.get('check_newline','off')
-    # check_extraspace=request.GET.get('check_extraspace','off')
-    # # print(v1)
-    # # print(v2)
-    # # print(v3)
     
-    # context={
-    #     'var_name':v2,
-    #     'var_email':v3,
-    #     'message':""
-
-    # }
-    # # if v4!='on':
-    # #     return redirect('/')
-    # if check_punctuation=="on":
-
-    #     punct='''!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~'''
-    #     analized=""
-    #     for char in v1:
-    #         if char not in punct:
-    #             analized=analized+char
-    #     context['message']='Your decided task : To remove Punctuation'
-
-    #     context['analized_text']=analized
-            
-        
-    #     return render(request,'about.html',context)
-
-    # elif check_captalize=="on":
-    #     analized=""
-    #     for char in v1:
-    #         analized=analized + char.upper()
-    #     context['message']='Your decided task : To convert into  Uppercase'
-    #     context['analized_text']=analized
-    #     return render(request,'about.html',context)
-
-    # elif check_newline=="on":
-    #     analized=""
-    #     for char in v1:
-    #         if char!="\n":
-    #             analized=analized + char
-    #     context['message']='Your decided task : To Remove New Line'
-    #     context['analized_text']=analized
-    #     return render(request,'about.html',context)
-    # elif check_extraspace=="on":
-    #     analized=""
-    #     for index, char in enumerate(v1):
-    #         try:
-    #             if v1[index]==" " and v1[index+1]==" ":
-    #                 continue
-    #             else:
-    #                 analized=analized + char
-    #         except Exception as e:
-    #             continue
-
-    #     context['message']='Your decided task : To Remove Extra Space'
-    #     context['analized_text']=analized
 
         return render(request,'about.html')
-
-
 
 
 
@@ -79,8 +16,8 @@ def about(request):
 
 def analyze(request):
     v1=request.GET.get('textare','default')
-    v2=request.GET.get('name','default')
-    v3=request.GET.get('email','default')
+    v2=request.GET.get('name','none')
+    v3=request.GET.get('email','node')
     check_punctuation =request.GET.get('check_punctuation','off')
     check_captalize=request.GET.get('check_captalize','off')
     check_newline=request.GET.get('check_newline','off')
@@ -92,6 +29,8 @@ def analyze(request):
     context={
         'var_name':v2,
         'var_email':v3,
+        'alert_bold':"Error",
+        'alert2':"Nothing to analyze. Go to Home",
         'message':""
 
     }
@@ -107,6 +46,8 @@ def analyze(request):
         context['message']='Your decided task : To remove Punctuation'
 
         context['analized_text']=analized
+        context['alert_bold']='Success'
+        context['alert2']='Punctuation removed Successfully'
             
         
         return render(request,'analyze.html',context)
@@ -117,6 +58,9 @@ def analyze(request):
             analized=analized + char.upper()
         context['message']='Your decided task : To convert into  Uppercase'
         context['analized_text']=analized
+        context['alert_bold']='Success'
+        context['alert2']='Text Capitalize Successfully'
+            
         return render(request,'analyze.html',context)
 
     elif check_newline=="on":
@@ -126,6 +70,9 @@ def analyze(request):
                 analized=analized + char
         context['message']='Your decided task : To Remove New Line'
         context['analized_text']=analized
+        context['alert_bold']='Success'
+        context['alert2']='New Line removed Successfully'
+            
         return render(request,'analyze.html',context)
     elif check_extraspace=="on":
         analized=""
@@ -140,6 +87,9 @@ def analyze(request):
 
         context['message']='Your decided task : To Remove Extra Space'
         context['analized_text']=analized
+        context['alert_bold']='Success'
+        context['alert2']='Extra Space removed Successfully'
+            
 
         return render(request,'analyze.html',context)
 
